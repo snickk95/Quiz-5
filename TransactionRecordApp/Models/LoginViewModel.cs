@@ -4,6 +4,8 @@ namespace TransactionRecordApp.Models
 {
     public class LoginViewModel
     {
+        //used snippet 5 to set up the login of a user 
+        //complete with username password return url and remember me variables
         [Required(ErrorMessage = "Please enter a username.")]
         [StringLength(255)]
         public string? Username { get; set; }
