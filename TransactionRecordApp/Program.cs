@@ -35,4 +35,11 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+//this section calls the static method added to the db context to configure the admin user
+var scopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
+using (var scope = scopeFactory.CreateScope())
+{
+    await TransactionContext.CreateAdminUser(scope.ServiceProvider);
+}
+
 app.Run();
