@@ -2,7 +2,7 @@
 
 namespace TransactionRecordApp.Models
 {
-    public class ReghisterViewModel
+    public class RegisterViewModel
     {
         //used snippet 6 to set up the regestring of a user 
         //complete with username password and a confirm password
