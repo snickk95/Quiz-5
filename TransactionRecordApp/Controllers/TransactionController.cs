@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,8 @@ namespace TransactionRecordApp.Controllers
         /// <summary>
         /// Action to allow the user to add a new transaction
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns
+        [Authorize()]
         [HttpGet]
         public IActionResult Add()
         {
@@ -40,6 +42,7 @@ namespace TransactionRecordApp.Controllers
         /// </summary>
         /// <param name="transaction"></param>
         /// <returns></returns>
+        [Authorize()]
         [HttpPost]
         public IActionResult Add(Transaction transaction)
         {
@@ -61,6 +64,7 @@ namespace TransactionRecordApp.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize()]
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -81,6 +85,7 @@ namespace TransactionRecordApp.Controllers
         /// </summary>
         /// <param name="transaction"></param>
         /// <returns></returns>
+        [Authorize()]
         [HttpPost]
         public IActionResult Edit(Transaction transaction)
         {
@@ -106,6 +111,7 @@ namespace TransactionRecordApp.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize()]
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -120,6 +126,7 @@ namespace TransactionRecordApp.Controllers
         /// </summary>
         /// <param name="transaction"></param>
         /// <returns></returns>
+        [Authorize()]
         [HttpPost]
         public IActionResult Delete(Transaction transaction)
         {
