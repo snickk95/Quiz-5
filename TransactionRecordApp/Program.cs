@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,13 @@ builder.Services.AddControllersWithViews();
 var connStr = builder.Configuration.GetConnectionString("TransactionsDb");
 builder.Services.AddDbContext<TransactionContext>(options => options.UseSqlServer(connStr));
 
+
+//set up the identity service
+builder.Services.AddIdentity<User, IdentityRole>(options => {
+    options.Password.RequiredLength = 6;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireDigit = true;
+}).AddEntityFrameworkStores<TransactionContext>().AddDefaultTokenProviders();
 
 var app = builder.Build();
 
@@ -30,6 +38,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+//set up to use authentication
+app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",
